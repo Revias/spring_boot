@@ -46,7 +46,7 @@ public class PostsRepositoryTest {
     }
     @Test
     public void BaseTimeEntity_등록() {
-        //given
+        //여기서 오류 고치는데 시간좀 걸림
         LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
         postsRepository.save(Posts.builder()
                 .title("title")
