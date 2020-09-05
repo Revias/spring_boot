@@ -1,7 +1,7 @@
 package com.revias.springBoot.web;
 
 import com.revias.springBoot.posts.service.PostsService;
-import com.revias.springBoot.web.Dto.PostsResponseDto;
+import com.revias.springBoot.web.Dto.PostsListResponseDto;
 import com.revias.springBoot.web.Dto.PostsSaveRequestDto;
 import com.revias.springBoot.web.Dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class PostsApiController {
     }
 
     @GetMapping("/api/v1/posts/{id}")
-    public PostsResponseDto findById(@PathVariable Long id) {
+    public PostsListResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
 }
