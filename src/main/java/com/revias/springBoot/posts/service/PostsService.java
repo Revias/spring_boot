@@ -18,15 +18,6 @@ import java.util.stream.Collectors;
 @Service
 public class PostsService {
 
-    private final PostsRepository postsRepository;
-
-    @Transactional(readOnly = true)
-    public List<PostsListResponseDto> findAllDesc() {
-        return postsRepository.findAllDesc().stream()
-                .map(PostsListResponseDto::new)
-                .collect(Collectors.toList());
-    }
-
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
 
@@ -48,6 +39,14 @@ public class PostsService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
 
         return new PostsListResponseDto(entity);
+    }
+    private final PostsRepository postsRepository;
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAll().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
 }
